@@ -179,6 +179,10 @@ main>section::before{content:attr(data-p);display:block;margin:-34px -26px 26px;
 #up:hover{box-shadow:0 0 22px rgba(255,150,40,.6)}
 @media (max-width:760px){main>section{padding:26px 16px;margin:20px 0}main>section::before{margin:-26px -16px 20px}}
 @media (prefers-reduced-motion:reduce){#up{transition:none}}
+
+.kpis{display:flex;gap:34px;flex-wrap:wrap;margin-top:34px}
+.kpis b{display:block;font:800 clamp(30px,6vw,44px)/1 Unbounded,sans-serif;color:var(--amber);text-shadow:0 0 20px rgba(255,122,26,.5);margin-bottom:6px}
+.kpis .cap{color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
@@ -191,7 +195,7 @@ main>section::before{content:attr(data-p);display:block;margin:-34px -26px 26px;
 <canvas id="bg" aria-hidden="true"></canvas>
 <div class="shade"></div>
 
-<header class="top"><div class="wrap"><nav><b><img class="nav-av" src="data:image/jpeg;base64,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" alt="" width="30" height="30">&lt;floxin_sky/&gt;</b><span><a href="#services">услуги</a><a href="#works">работы</a><a href="#reviews">отзывы</a><a href="#stack">стек</a><a href="#why">почему я</a><a href="#process">как работаю</a><a href="#tz">заявка</a><a href="#faq">вопросы</a><a href="#contact">контакты</a></span></nav></div></header>
+<header class="top"><div class="wrap"><nav><b><img class="nav-av" src="data:image/jpeg;base64,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" alt="" width="30" height="30">&lt;floxin_sky/&gt;</b><span><a href="#services">услуги</a><a href="#works">работы</a><a href="#reviews">отзывы</a><a href="#stack">стек</a><a href="#why">почему я</a><a href="#process">как работаю</a><a href="#terms">условия</a><a href="#tz">заявка</a><a href="#faq">вопросы</a><a href="#contact">контакты</a></span></nav></div></header>
 
 <main class="wrap">
   <div class="hero">
@@ -202,6 +206,10 @@ main>section::before{content:attr(data-p);display:block;margin:-34px -26px 26px;
       <div class="btns">
         <a class="btn main" href="https://t.me/FloxinSky" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg>Заказать бота</a>
         <a class="btn alt" href="https://t.me/uslugisky" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg>Читать отзывы</a>
+      </div>
+      <div class="kpis">
+        <div><b><span data-to="16">16</span></b><span class="cap">ботов запущено</span></div>
+        <div><b><span data-to="3.5" data-dec="1">3,5</span> года</b><span class="cap">в программировании</span></div>
       </div>
     </div>
     <div class="stack"><div class="glass term" aria-label="Пример кода бота">
@@ -281,6 +289,7 @@ dp = Dispatcher()
       <div class="glass"><strong>Деплой</strong><span>Запуск на сервере включён</span></div>
       <div class="glass"><strong>Админка</strong><span>Удобное управление ботом</span></div>
       <div class="glass"><strong>от 1000 ₽</strong><span>Точная цена зависит от задачи</span></div>
+      <div class="glass"><strong>35–50%</strong><span>Предоплата, зависит от суммы проекта</span></div>
     </div>
   </section>
 
@@ -288,10 +297,17 @@ dp = Dispatcher()
     <h2>Как мы работаем</h2>
     <ol>
       <li class="glass"><b>Пишете ТЗ</b><span>Опишите, что должен делать бот, в Telegram.</span></li>
-      <li class="glass"><b>Согласуем цену и срок</b><span>Называю стоимость и дату сдачи.</span></li>
+      <li class="glass"><b>Согласуем цену и срок</b><span>Называю стоимость и дату сдачи. Предоплата 35–50%, зависит от суммы.</span></li>
       <li class="glass"><b>Разрабатываю</b><span>Показываю промежуточный результат.</span></li>
       <li class="glass"><b>Запускаю на сервере</b><span>Бот работает, админка настроена.</span></li>
     </ol>
+  </section>
+
+  <section id="terms" data-p="~/terms">
+    <h2>Условия работы</h2>
+    <p class="sub">Коротко о главном. Полная политика конфиденциальности и условия работы опубликованы в Telegraph, обращаясь ко мне, вы с ними соглашаетесь.</p>
+    <div class="grid"><div class="glass card"><code>prepay()</code><h3>Предоплата</h3><p>Работаю по предоплате 35–50% от стоимости проекта. Точный процент зависит от сложности, сроков и объёма работ.</p></div><div class="glass card"><code>balance()</code><h3>Остаток после показа</h3><p>Сначала показываю готовый работающий проект. Если всё соответствует ТЗ, вы оплачиваете остаток и получаете проект.</p></div><div class="glass card"><code>warranty(days=3)</code><h3>Гарантия 3 дня</h3><p>Бесплатно исправляю баги на моей стороне в течение 3 дней после передачи. Выходные не считаются.</p></div><div class="glass card"><code>edits(price=200)</code><h3>Правки после гарантии</h3><p>Одна правка стоит 200 ₽. Если нужна серьёзная переработка, цену обсуждаем отдельно.</p></div><div class="glass card"><code>spec_only()</code><h3>Работа по ТЗ</h3><p>Делаю строго по техзаданию. Новые функции и изменение требований оплачиваются отдельно.</p></div><div class="glass card"><code>refund()</code><h3>Возврат</h3><p>Возврат возможен только до начала разработки, с удержанием 5% за консультацию и резерв времени.</p></div><div class="glass card"><code>deploy()</code><h3>Запуск и код</h3><p>Помощь с хостингом и запуском входит в цену. После полной оплаты исходный код переходит к вам.</p></div><div class="glass card"><code>nda()</code><h3>Конфиденциальность</h3><p>Не разглашаю информацию о проектах клиентов и удаляю данные по запросу. В портфолио показываю работы без деталей.</p></div><div class="glass card"><code>hours()</code><h3>Режим работы</h3><p>Отвечаю в течение 24 часов в рабочие дни. По субботам и воскресеньям не работаю.</p></div></div>
+    <p class="more-link"><a class="btn alt" href="https://telegra.ph/POLITIKA-KONFIDENCIALNOSTI-I-USLOVIYA-RABOTY-FloxinSky-08-15" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg>Читать политику полностью</a></p>
   </section>
 
   <section id="tz" data-p="~/request">
@@ -310,6 +326,7 @@ dp = Dispatcher()
   <section id="faq" data-p="~/faq">
     <h2>Частые вопросы</h2>
     <details class="glass"><summary>Сколько стоит бот?</summary><p>От 1000 ₽. Точная цена зависит от задачи: напишите ТЗ, и я назову стоимость.</p></details>
+    <details class="glass"><summary>Нужна ли предоплата?</summary><p>Да, перед стартом нужна предоплата 35–50%. Точный процент зависит от суммы проекта.</p></details>
     <details class="glass"><summary>Как быстро будет готово?</summary><p>Бота делаю за 3–5 дней, сайты занимают больше времени.</p></details>
     <details class="glass"><summary>Где будет работать бот?</summary><p>Запуск на сервере входит в работу. Управлять ботом можно через удобную админку.</p></details>
     <details class="glass"><summary>Где посмотреть отзывы?</summary><p>Все отзывы собраны в канале @uslugisky.</p></details>
@@ -327,7 +344,7 @@ dp = Dispatcher()
   </section>
 </main>
 
-<footer><div style="margin-bottom:8px"><svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg><svg class="ic" aria-hidden="true"><use href="#i-py"/></svg><svg class="ic" aria-hidden="true"><use href="#i-wp"/></svg></div>&copy; 2026 FLOXIN SKY &nbsp;·&nbsp; Тимур</footer>
+<footer><div style="margin-bottom:8px"><svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg><svg class="ic" aria-hidden="true"><use href="#i-py"/></svg><svg class="ic" aria-hidden="true"><use href="#i-wp"/></svg></div>&copy; 2026 FLOXIN SKY &nbsp;·&nbsp; Тимур<div style="margin-top:10px"><a href="https://telegra.ph/POLITIKA-KONFIDENCIALNOSTI-I-USLOVIYA-RABOTY-FloxinSky-08-15" target="_blank" rel="noopener" style="color:var(--amber)">Политика конфиденциальности и условия работы</a></div></footer>
 
 <button id="up" type="button" aria-label="Наверх"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <a class="fab" href="https://t.me/FloxinSky" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg>Написать в Telegram</a>
@@ -401,6 +418,22 @@ dp = Dispatcher()
   var up=document.getElementById('up');
   addEventListener('scroll',function(){up.classList.toggle('show',scrollY>700)},{passive:true});
   up.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})});
+})();
+</script>
+<script>
+(function(){
+  var cs=[].slice.call(document.querySelectorAll('[data-to]'));
+  var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fmt(n,d){return n.toFixed(d).replace('.',',')}
+  function run(el){
+    var to=parseFloat(el.dataset.to),d=+el.dataset.dec||0,t0=null;
+    function f(t){if(!t0)t0=t;var k=Math.min((t-t0)/1400,1),e=1-Math.pow(1-k,3);el.textContent=fmt(to*e,d);if(k<1)requestAnimationFrame(f)}
+    requestAnimationFrame(f);
+  }
+  if(still||!('IntersectionObserver' in window))return;
+  cs.forEach(function(el){el.textContent=fmt(0,+el.dataset.dec||0)});
+  var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);o.unobserve(e.target)}})},{threshold:.6});
+  cs.forEach(function(el){o.observe(el)});
 })();
 </script>
 </body>
